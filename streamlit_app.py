@@ -15,6 +15,7 @@ import streamlit as st
 import re
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import accuracy_score
 
 # Fungsi untuk membersihkan teks
 def clean_text(text):
@@ -24,7 +25,7 @@ def clean_text(text):
     return text
 
 # Membersihkan teks dalam dataset
-data['clean_text'] = data['clean_text'].apply(clean_text)
+data['clean_text'] = data['translated_text'].apply(clean_text)
 
 # Memisahkan fitur dan label
 X = data['clean_text']
@@ -34,7 +35,7 @@ y = data['sentimen']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Mengubah teks menjadi fitur menggunakan TF-IDF
-vectorizer = TfidfVectorizer(max_features=5000)
+vectorizer = TfidfVectorizer()
 X_train_tfidf = vectorizer.fit_transform(X_train)
 X_test_tfidf = vectorizer.transform(X_test)
 
@@ -51,8 +52,12 @@ nb_model.fit(X_train_tfidf, y_train)
 # Memprediksi pada set pengujian
 y_pred_nb = nb_model.predict(X_test_tfidf)
 
+# Akurasi Model
+accuracy_nb = accuracy_score(y_test, y_pred_nb)
+
 # Evaluasi model
 print("Naive Bayes Classification Report")
+print("Akurasi Naive Bayes:", accuracy_nb)
 print(classification_report(y_test, y_pred_nb))
 
 #4.KNN
@@ -65,8 +70,12 @@ knn_model.fit(X_train_tfidf, y_train)
 # Memprediksi pada set pengujian
 y_pred_knn = knn_model.predict(X_test_tfidf)
 
+# Akurasi Model
+accuracy_knn = accuracy_score(y_test, y_pred_knn)
+
 # Evaluasi model
 print("KNN Classification Report")
+print("Akurasi KNN:", accuracy_knn)
 print(classification_report(y_test, y_pred_knn))
 
 #-----
@@ -81,8 +90,12 @@ svm_model.fit(X_train_tfidf, y_train)
 # Memprediksi pada set pengujian
 y_pred_svm = svm_model.predict(X_test_tfidf)
 
+# Akurasi Model
+accuracy_svm = accuracy_score(y_test, y_pred_svm)
+
 # Evaluasi model
 print("SVM Classification Report")
+print("Akurasi SVM:", accuracy_svm)
 print(classification_report(y_test, y_pred_svm))
 
 #-----
@@ -119,6 +132,7 @@ svm_prediction = svm_model.predict(input_tfidf)
 # Menampilkan hasil prediksi
 # Naive Bayes
 st.subheader("1. Naive Bayes")
+st.write(f"Akurasi Naive Bayes: {accuracy_nb}")
 st.write(f"Prediksi Naive Bayes: {nb_prediction[0]}")
 
 if nb_prediction == "positif":
@@ -130,6 +144,7 @@ else:
 
 # KNN
 st.subheader("2. KNN")
+st.write(f"Akurasi KNN: {accuracy_knn}")
 st.write(f"KNN Prediction: {knn_prediction[0]}")
 
 if knn_prediction == "positif":
@@ -142,6 +157,7 @@ else:
 
 # SVM
 st.subheader("3. SVM")
+st.write(f"Akurasi SVM: {accuracy_svm}")
 st.write(f"SVM Prediction: {svm_prediction[0]}")
 
 if svm_prediction == "positif":
