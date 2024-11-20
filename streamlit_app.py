@@ -89,15 +89,21 @@ print(classification_report(y_test, y_pred_svm))
 
 #App With Streamlit
 # Judul aplikasi
-st.title("🎈 Sentiment Analysis Application")
+st.title("🎈 Aplikasi Sentimen Analisis")
 
 # Deskripsi aplikasi
 st.write(
     "Selamat datang di aplikasi sentimen analisis!"
 )
+st.write(
+    "Karya Leonard Agust Laga Lajar"
+)
+st.write(
+    "Untuk melakukan sentimen analisis, silahkan masukkan teks."
+)
 
 # Input teks dari pengguna
-user_input = st.text_area("Enter text for sentiment analysis:")
+user_input = st.text_area("Masukkan teks untuk analisis sentimen:")
 
 # Membersihkan teks
 clean_input = clean_text(user_input)
