@@ -1,5 +1,5 @@
 #Install Module
-!pip install sklearn
+pip install sklearn
 
 #1.Baca Data
 import pandas as pd
