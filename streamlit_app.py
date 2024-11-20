@@ -119,7 +119,6 @@ svm_prediction = svm_model.predict(input_tfidf)
 # Menampilkan hasil prediksi
 # Naive Bayes
 st.subheader("1. Naive Bayes")
-st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_nb)} ")
 st.write(f"Prediksi Naive Bayes: {nb_prediction[0]}")
 
 if nb_prediction == "positif":
@@ -131,7 +130,6 @@ else:
 
 # KNN
 st.subheader("2. KNN")
-st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_knn)} ")
 st.write(f"KNN Prediction: {knn_prediction[0]}")
 
 if knn_prediction == "positif":
@@ -144,7 +142,6 @@ else:
 
 # SVM
 st.subheader("3. SVM")
-st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_svm)} ")
 st.write(f"SVM Prediction: {svm_prediction[0]}")
 
 if svm_prediction == "positif":
