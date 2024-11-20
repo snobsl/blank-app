@@ -117,6 +117,30 @@ knn_prediction = knn_model.predict(input_tfidf)
 svm_prediction = svm_model.predict(input_tfidf)
 
 # Menampilkan hasil prediksi
+# Naive Bayes
 st.write(f"Naive Bayes Prediction: {nb_prediction[0]}")
+
+if nb_prediction == "positif":
+    st.success("Kesimpulan dari Naive Bayes Prediction: Gojek masih dapat berkembang 🚀")
+else:
+    st.warning("Kesimpulan dari Naive Bayes Prediction: Gojek dapat menurun sewaktu-waktu")
+
+# KNN
 st.write(f"KNN Prediction: {knn_prediction[0]}")
+
+if knn_prediction == "positif":
+    st.success("Kesimpulan dari KNN Prediction: Gojek masih dapat berkembang 🚀")
+else:
+    st.warning("Kesimpulan dari KNN Prediction: Gojek dapat menurun sewaktu-waktu")
+
+# SVM
 st.write(f"SVM Prediction: {svm_prediction[0]}")
+
+if svm_prediction == "positif":
+    st.success("Kesimpulan dari SVM Prediction: Gojek masih dapat berkembang 🚀")
+else:
+    st.warning("Kesimpulan dari SVM Prediction: Gojek dapat menurun sewaktu-waktu")
+
+
+
+
