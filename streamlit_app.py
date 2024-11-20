@@ -118,29 +118,38 @@ svm_prediction = svm_model.predict(input_tfidf)
 
 # Menampilkan hasil prediksi
 # Naive Bayes
-st.write(f"Naive Bayes Prediction: {nb_prediction[0]}")
+st.subheader("1. Naive Bayes")
+st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_nb)} ")
+st.write(f"Prediksi Naive Bayes: {nb_prediction[0]}")
 
 if nb_prediction == "positif":
-    st.success("Kesimpulan dari Naive Bayes Prediction: Gojek masih dapat berkembang 🚀")
+    st.success("Kesimpulan dari Prediksi dengan Naive Bayes: Gojek masih dapat berkembang 📈")
+elif nb_prediction == "netral":
+    st.info("Kesimpulan dari Prediksi dengan Naive Bayes: Gojek masih ada di posisi aman, tetapi dapat menurun sewaktu-waktu📊")
 else:
-    st.warning("Kesimpulan dari Naive Bayes Prediction: Gojek dapat menurun sewaktu-waktu")
+    st.warning("Kesimpulan dari Prediksi dengan Naive Bayes: Gojek dapat menurun sewaktu-waktu📉")
 
 # KNN
+st.subheader("2. KNN")
+st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_knn)} ")
 st.write(f"KNN Prediction: {knn_prediction[0]}")
 
 if knn_prediction == "positif":
-    st.success("Kesimpulan dari KNN Prediction: Gojek masih dapat berkembang 🚀")
+    st.success("Kesimpulan dari Prediksi dengan KNN: Gojek masih dapat berkembang 📈")
+elif knn_prediction == "netral":
+    st.info("Kesimpulan dari Prediksi dengan KNN: Gojek masih ada di posisi aman, tetapi dapat menurun sewaktu-waktu📊")
 else:
-    st.warning("Kesimpulan dari KNN Prediction: Gojek dapat menurun sewaktu-waktu")
+    st.warning("Kesimpulan dari Prediksi dengan KNN: Gojek dapat menurun sewaktu-waktu📉")
+
 
 # SVM
+st.subheader("3. SVM")
+st.write(f"Akurasi Naive Bayes Accuration: {classification_report(y_test, y_pred_svm)} ")
 st.write(f"SVM Prediction: {svm_prediction[0]}")
 
 if svm_prediction == "positif":
-    st.success("Kesimpulan dari SVM Prediction: Gojek masih dapat berkembang 🚀")
+    st.success("Kesimpulan dari Prediksi dengan SVM: Gojek masih dapat berkembang 📈")
+elif svm_prediction == "netral":
+    st.info("Kesimpulan dari Prediksi dengan SVM: Gojek masih ada di posisi aman, tetapi dapat menurun sewaktu-waktu📊")
 else:
-    st.warning("Kesimpulan dari SVM Prediction: Gojek dapat menurun sewaktu-waktu")
-
-
-
-
+    st.warning("Kesimpulan dari Prediksi dengan SVM: Gojek dapat menurun sewaktu-waktu📉")
