@@ -89,7 +89,7 @@ print(classification_report(y_test, y_pred_svm))
 
 #App With Streamlit
 # Judul aplikasi
-st.title("🎈 Aplikasi Sentimen Analisis")
+st.title("📊 Aplikasi Sentimen Analisis")
 
 # Deskripsi aplikasi
 st.write(
