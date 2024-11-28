@@ -28,7 +28,7 @@ def clean_text(text):
 data['clean_text'] = data['translated_text'].apply(clean_text)
 
 # Memisahkan fitur dan label
-X = data['clean_text']
+X = data['translated_text']
 y = data['sentimen']
 
 # Membagi data menjadi set pelatihan dan pengujian
@@ -124,12 +124,16 @@ clean_input = clean_text(user_input)
 # Mengubah teks menjadi fitur
 input_tfidf = vectorizer.transform([clean_input])
 
+
 # Prediksi dengan masing-masing model
 nb_prediction = nb_model.predict(input_tfidf)
 knn_prediction = knn_model.predict(input_tfidf)
 svm_prediction = svm_model.predict(input_tfidf)
 
 # Menampilkan hasil prediksi
+# Menampilkan sentimen yang ada
+jumlah_sentimen = data['sentimen'].value_counts()
+st.write(f"Jumlah sentimen yang dianalisis: {jumlah_sentimen}")
 # Naive Bayes
 st.subheader("1. Naive Bayes")
 st.write(f"Akurasi Naive Bayes: {accuracy_nb}")
